@@ -1,0 +1,44 @@
+﻿@{string currentPage = ViewContext.RouteData.Values["action"].ToString();}
+
+<div class="sidebar" data-color="purple" data-image="/Content/img/sidebar-1.jpg">
+    <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | blue | green | orange | red"
+
+        Tip 2: you can also add an image using data-image tag
+    -->
+
+    <div class="logo">
+        <a href="javascript:void(0)" class="simple-text">
+            &#64;AngeloCapp97
+        </a>
+    </div>
+
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li>
+                <a href="/">
+                    <i class="material-icons">dashboard</i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li>
+                <a href="/movies">
+                    <i class="material-icons">local_movies</i>
+                    <p>Movies</p>
+                </a>
+            </li>
+            <li>
+                <a href="/customers">
+                    <i class="material-icons">people</i>
+                    <p>Customers</p>
+                </a>
+            </li>
+            <li class="active-pro">
+                <a href="/home/upgrade">
+                    <i class="material-icons">unarchive</i>
+                    <p>Upgrade to PRO</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

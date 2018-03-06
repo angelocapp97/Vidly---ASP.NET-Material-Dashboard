@@ -19,7 +19,6 @@
                         <thead class="text-primary">
                         <th>Name</th>
                         <th>Genre</th>
-                        <th>Release Date</th>
                         <th></th>
                         </thead>
                         <tbody>
@@ -28,7 +27,6 @@
                             <tr>
                                 <td>@movie.Name</td>
                                 <td>@movie.Genre.Name</td>
-                                <td>@movie.ReleaseDate.ToShortDateString()</td>
                                 <td>@Html.ActionLink("Show more >>", "details/" + movie.Id, "movies")</td>
                             </tr>
 }

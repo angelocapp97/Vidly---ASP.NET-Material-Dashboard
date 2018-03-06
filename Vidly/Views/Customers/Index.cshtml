@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Movies</h2>
+<h2>Customers</h2>
 
 @if (!Model.Any())
 {
@@ -25,14 +25,16 @@ else
                             <thead class="text-primary">
                             <th>Name</th>
                             <th>Membership Type</th>
+                            <th></th>
                             </thead>
                             <tbody>
                                 @foreach (var customer in Model)
         {
-                        <tr>
-                            <td>@Html.ActionLink(customer.Name, "details/" + customer.Id, "customers")</td>
-                            <td>@customer.MembershipType.Name</td>
-                        </tr>
+                                <tr>
+                                    <td>@customer.Name</td>
+                                    <td>@customer.MembershipType.Name</td>
+                                    <td>@Html.ActionLink("Show more >>", "details/" + customer.Id, "customers")</td>
+                                </tr>
 }
                             </tbody>
                         </table>

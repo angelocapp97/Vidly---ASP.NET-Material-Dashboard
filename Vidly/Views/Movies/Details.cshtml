@@ -17,7 +17,12 @@
 }
 else
 {
-    <p>Id: @Model.Id</p>
-    <p>Name: @Model.Name</p>
+<ul>
+    <li>Name: @Model.Name</li>
+    <li>Genre: @Model.Genre.Name</li>
+    <li>Date Added: @Model.DateAdded.ToShortDateString()</li>
+    <li>Release Date: @Model.ReleaseDate.ToShortDateString()</li>
+    <li>Number in Stock: @Model.NumberInStock</li>
+</ul>
 }
 

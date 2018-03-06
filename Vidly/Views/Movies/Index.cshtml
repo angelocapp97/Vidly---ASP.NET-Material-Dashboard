@@ -6,6 +6,11 @@
 
 <h2>Movies</h2>
 
+<a href="/movies/new" class="btn btn-primary">
+    <i class="material-icons">create</i>
+    New Movie
+</a>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-12">
@@ -18,16 +23,14 @@
                     <table class="table">
                         <thead class="text-primary">
                         <th>Name</th>
-                        <th>Genre</th>
-                        <th></th>
+                        <th>Genre</th
                         </thead>
                         <tbody>
                             @foreach (var movie in Model)
         {
                             <tr>
-                                <td>@movie.Name</td>
+                                <td>@Html.ActionLink(movie.Name, "details/" + movie.Id, "movies")</td>
                                 <td>@movie.Genre.Name</td>
-                                <td>@Html.ActionLink("Show more >>", "details/" + movie.Id, "movies")</td>
                             </tr>
 }
                         </tbody>

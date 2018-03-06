@@ -1,4 +1,4 @@
-﻿@model Vidly.ViewModels.CustomersListViewModel
+﻿@model IEnumerable<Vidly.Models.Customer>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,39 +6,32 @@
 
 <h2>Movies</h2>
 
-@if (Model.Customers.Count == 0)
-{
-    <text>No customers found on our servers.</text>
-}
-else
-{
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header" data-background-color="orange">
-                        <h4 class="title">Movies</h4>
-                        <p class="category">Here is a list of movies.</p>
-                    </div>
-                    <div class="card-content table-responsive">
-                        <table class="table">
-                            <thead class="text-primary">
-                            <th>Name</th>
-                            </thead>
-                            <tbody>
-                                @foreach (var customer in Model.Customers)
-                                {
-                                    <tr>
-                                        <td>
-                                            @Html.ActionLink(customer.Name, "details/" + customer.Id, "customers")
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="orange">
+                    <h4 class="title">Movies</h4>
+                    <p class="category">Here is a list of movies.</p>
+                </div>
+                <div class="card-content table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                        <th>Name</th>
+                        </thead>
+                        <tbody>
+                            @foreach (var customer in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.ActionLink(customer.Name, "details/" + customer.Id, "customers")
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-}
+</div>

@@ -13,64 +13,50 @@ namespace Vidly.Controllers
 
         public ActionResult Index()
         {
-            var movies = new List<Movie>
-            {
-                new Movie { Id = 0, Name = "Shrek" },
-                new Movie { Id = 1, Name = "Hulk" },
-                new Movie { Id = 2, Name = "Batman" },
-                new Movie { Id = 3, Name = "Spiderman" },
-            };
+            var movies = GetMovies();
 
-            var viewModel = new MoviesListViewModel()
-            {
-                Movies = movies
-            };
-
-            return View(viewModel);
+            return View(movies);
         }
 
         public ActionResult Details(int id)
         {
-            var movies = new List<Movie>
+            var movie = GetMovies().SingleOrDefault(c => c.Id == id);
+
+            if (movie == null)
+                return HttpNotFound();
+
+            return View(movie);
+        }
+
+        private IEnumerable<Movie> GetMovies()
+        {
+            return new List<Movie>
             {
                 new Movie { Id = 0, Name = "Shrek" },
                 new Movie { Id = 1, Name = "Hulk" },
                 new Movie { Id = 2, Name = "Batman" },
                 new Movie { Id = 3, Name = "Spiderman" },
             };
-
-            Movie resultMovie = null;
-
-            foreach(var movie in movies)
-            {
-                if (movie.Id == id)
-                {
-                    resultMovie = movie;
-                    break;
-                }
-            }
-
-            return View(resultMovie);
         }
 
-        //// GET: Movies/Random
-        //public ActionResult Random()
-        //{
-        //    var movie = new Movie() { Name = "Shrek!" };
-        //    var customers = new List<Customer>
-        //    {
-        //        new Customer { Name = "Customer 1" },
-        //        new Customer { Name = "Customer 2" }
-        //    };
+        // GET: Movies/Random
+        public ActionResult Random()
+        {
+            var movie = new Movie() { Name = "Shrek!" };
+            var customers = new List<Customer>
+            {
+                new Customer { Name = "Customer 1" },
+                new Customer { Name = "Customer 2" }
+            };
 
-        //    var viewModel = new RandomMovieViewModel
-        //    {
-        //        Customers = customers,
-        //        Movie = movie
-        //    };
+            var viewModel = new RandomMovieViewModel
+            {
+                Customers = customers,
+                Movie = movie
+            };
 
-        //    return View(viewModel);
-        //}
+            return View(viewModel);
+        }
 
     }
 }

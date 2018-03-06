@@ -1,4 +1,4 @@
-﻿@model Vidly.ViewModels.MoviesListViewModel
+﻿@model IEnumerable<Vidly.Models.Movie>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,39 +6,32 @@
 
 <h2>Movies</h2>
 
-@if (Model.Movies.Count == 0)
-{
-    <text>No movies found on our servers.</text>
-}
-else
-{
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header" data-background-color="orange">
-                        <h4 class="title">Movies</h4>
-                        <p class="category">Here is a list of movies.</p>
-                    </div>
-                    <div class="card-content table-responsive">
-                        <table class="table">
-                            <thead class="text-primary">
-                                <th>Name</th>
-                            </thead>
-                            <tbody>
-                                @foreach (var movie in Model.Movies)
-                                {
-                                    <tr>
-                                        <td>
-                                            @Html.ActionLink(movie.Name, "details/" + movie.Id, "movies")
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="orange">
+                    <h4 class="title">Movies</h4>
+                    <p class="category">Here is a list of movies.</p>
+                </div>
+                <div class="card-content table-responsive">
+                    <table class="table">
+                        <thead class="text-primary">
+                        <th>Name</th>
+                        </thead>
+                        <tbody>
+                            @foreach (var movie in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.ActionLink(movie.Name, "details/" + movie.Id, "movies")
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-}
+</div>

@@ -6,32 +6,39 @@
 
 <h2>Movies</h2>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header" data-background-color="orange">
-                    <h4 class="title">Movies</h4>
-                    <p class="category">Here is a list of movies.</p>
-                </div>
-                <div class="card-content table-responsive">
-                    <table class="table">
-                        <thead class="text-primary">
-                        <th>Name</th>
-                        </thead>
-                        <tbody>
-                            @foreach (var customer in Model)
-                            {
-                                <tr>
-                                    <td>
-                                        @Html.ActionLink(customer.Name, "details/" + customer.Id, "customers")
-                                    </td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
+@if (!Model.Any())
+{
+    <p>We don't have any customers yet.</p>
+}
+else
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="orange">
+                        <h4 class="title">Movies</h4>
+                        <p class="category">Here is a list of movies.</p>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                            <th>Name</th>
+                            <th>Membership Type</th>
+                            </thead>
+                            <tbody>
+                                @foreach (var customer in Model)
+        {
+                        <tr>
+                            <td>@Html.ActionLink(customer.Name, "details/" + customer.Id, "customers")</td>
+                            <td>@customer.MembershipType.Name</td>
+                        </tr>
+}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+}

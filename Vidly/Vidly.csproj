@@ -190,6 +190,22 @@
     <Compile Include="Migrations\201803051626132_ApplyAnnotationsToCustomerName.Designer.cs">
       <DependentUpon>201803051626132_ApplyAnnotationsToCustomerName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803060957503_AddNameToMembershipType.cs" />
+    <Compile Include="Migrations\201803060957503_AddNameToMembershipType.Designer.cs">
+      <DependentUpon>201803060957503_AddNameToMembershipType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803061018100_UndoAddingName.cs" />
+    <Compile Include="Migrations\201803061018100_UndoAddingName.Designer.cs">
+      <DependentUpon>201803061018100_UndoAddingName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803061021209_AddMembershipName.cs" />
+    <Compile Include="Migrations\201803061021209_AddMembershipName.Designer.cs">
+      <DependentUpon>201803061021209_AddMembershipName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803061022311_InsertMembershipNames.cs" />
+    <Compile Include="Migrations\201803061022311_InsertMembershipNames.Designer.cs">
+      <DependentUpon>201803061022311_InsertMembershipNames.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\MembreshipType.cs" />
@@ -289,6 +305,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803051626132_ApplyAnnotationsToCustomerName.resx">
       <DependentUpon>201803051626132_ApplyAnnotationsToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803060957503_AddNameToMembershipType.resx">
+      <DependentUpon>201803060957503_AddNameToMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803061018100_UndoAddingName.resx">
+      <DependentUpon>201803061018100_UndoAddingName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803061021209_AddMembershipName.resx">
+      <DependentUpon>201803061021209_AddMembershipName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803061022311_InsertMembershipNames.resx">
+      <DependentUpon>201803061022311_InsertMembershipNames.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

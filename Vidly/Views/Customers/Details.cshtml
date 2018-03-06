@@ -17,7 +17,9 @@
 }
 else
 {
-    <p>Id: @Model.Id</p>
-    <p>Name: @Model.Name</p>
+    <ul>
+        <li>Name: @Model.Name</li>
+        <li>Birthdate: @Model.Birthdate.Value.ToShortDateString()</li>
+    </ul>
 }
 

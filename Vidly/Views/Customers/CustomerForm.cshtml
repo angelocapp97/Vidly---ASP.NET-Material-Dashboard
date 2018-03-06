@@ -1,0 +1,56 @@
+﻿@model Vidly.ViewModels.CustomerFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Customer</h2>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header" data-background-color="purple">
+                    <h4 class="title">Create New Profile</h4>
+                    <p class="category">Insert here new profile data</p>
+                </div>
+                <div class="card-content">
+
+                    @using (Html.BeginForm("Save", "Customers"))
+    {
+                <div class="col-md-6">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Name</label>
+                        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group label-floating">
+                        <label class="control-label">Birthdate</label>
+                        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+                        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribed to Newsletter?
+                        </label>
+                    </div>
+                </div>
+                @Html.HiddenFor(m => m.Customer.Id)
+                <div class="col-md-6">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

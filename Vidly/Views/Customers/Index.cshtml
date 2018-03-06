@@ -25,15 +25,13 @@ else
                             <thead class="text-primary">
                             <th>Name</th>
                             <th>Membership Type</th>
-                            <th></th>
                             </thead>
                             <tbody>
                                 @foreach (var customer in Model)
         {
                                 <tr>
-                                    <td>@customer.Name</td>
+                                    <td>@Html.ActionLink(customer.Name, "edit/" + customer.Id, "customers")</td>
                                     <td>@customer.MembershipType.Name</td>
-                                    <td>@Html.ActionLink("Show more >>", "details/" + customer.Id, "customers")</td>
                                 </tr>
 }
                             </tbody>

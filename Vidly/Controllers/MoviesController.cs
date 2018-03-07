@@ -90,6 +90,14 @@ namespace Vidly.Controllers
 
         public ActionResult Delete(int id)
         {
+            var movieInDb = _context.Movies.SingleOrDefault(c => c.Id == id);
+
+            if (movieInDb == null)
+                return RedirectToAction("Index", "movies");
+
+            _context.Movies.Remove(movieInDb);
+            _context.SaveChanges();
+
             return RedirectToAction("Index", "movies");
         }
 

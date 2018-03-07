@@ -93,5 +93,18 @@ namespace Vidly.Controllers
 
             return View("CustomerForm", viewModel);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customerInDb == null)
+                return RedirectToAction("Index", "customers");
+
+            _context.Customers.Remove(customerInDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "customers");
+        }
     }
 }

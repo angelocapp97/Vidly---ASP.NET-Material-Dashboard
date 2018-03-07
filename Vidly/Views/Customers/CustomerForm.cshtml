@@ -27,16 +27,16 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group label-floating">
-                        @Html.LabelFor(m => m.Customer.Birthdate, new { @class = "control-label" })
-                        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:d MMMM yyyy}", new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Customer.Birthdate)
+                        @Html.LabelFor(m => m.Customer.MembershipTypeId, new { @class = "control-label" })
+                        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group label-floating">
-                        @Html.LabelFor(m => m.Customer.MembershipTypeId, new { @class = "control-label" })
-                        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "", new { @class = "form-control" })
-                        @Html.ValidationMessageFor(m => m.Customer.MembershipTypeId)
+                        @Html.LabelFor(m => m.Customer.Birthdate, new { @class = "control-label" })
+                        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:d MMMM yyyy}", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Customer.Birthdate)
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -46,11 +46,9 @@
                         </label>
                     </div>
                 </div>
-                if (Model.Customer != null)
-{
                 @Html.HiddenFor(m => m.Customer.Id)
-}
                 <div class="col-md-12">
+                    @Html.AntiForgeryToken()
                     <button type="submit" class="btn btn-success">
                         <i class="material-icons">save</i>
                         Save

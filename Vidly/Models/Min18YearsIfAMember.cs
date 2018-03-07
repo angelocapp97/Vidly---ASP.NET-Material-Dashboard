@@ -26,7 +26,8 @@ namespace Vidly.Models
             if (age < 0)
                 return new ValidationResult("Birthdate cannot exceed today's date.");
 
-            if (customer.MembershipTypeId == 0 || customer.MembershipTypeId == 1)
+            if (customer.MembershipTypeId == MembershipType.Unknown || 
+                customer.MembershipTypeId == MembershipType.PayAsYouGo)
                 return ValidationResult.Success;
 
             return (age >= 18)

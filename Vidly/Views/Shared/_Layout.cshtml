@@ -40,6 +40,7 @@
     @Scripts.Render("~/bundles/bootstrap-notify")
     @Scripts.Render("~/bundles/material-dashboard")
     @Scripts.Render("~/bundles/demo")
+    @RenderSection("Scripts", false)
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -49,7 +50,5 @@
 
         });
     </script>
-    @RenderSection("TableScripts", false)
-
 </body>
 </html>

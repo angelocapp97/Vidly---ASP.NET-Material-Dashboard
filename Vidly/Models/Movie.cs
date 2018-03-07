@@ -21,7 +21,6 @@ namespace Vidly.Models
         public Genre Genre { get; set; }
 
         [Display(Name = "Date Added")]
-        [DataType(DataType.DateTime, ErrorMessage = "Invalid date")]
         public DateTime? DateAdded { get; set; }
 
         [Display(Name = "Release Date")]

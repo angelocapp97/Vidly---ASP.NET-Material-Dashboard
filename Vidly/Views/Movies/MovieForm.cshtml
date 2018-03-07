@@ -59,6 +59,7 @@
                 <div class="row">
                     @Html.HiddenFor(m => m.Movie.Id)
                     <div class="col-md-12">
+                        @Html.AntiForgeryToken()
                         <button type="submit" class="btn btn-success">
                             <i class="material-icons">save</i>
                             Save

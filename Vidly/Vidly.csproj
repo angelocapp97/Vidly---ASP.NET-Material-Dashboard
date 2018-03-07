@@ -218,10 +218,15 @@
     <Compile Include="Migrations\201803061101478_Genres.Designer.cs">
       <DependentUpon>201803061101478_Genres.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803071343285_ModifyMovieAttrToNullable.cs" />
+    <Compile Include="Migrations\201803071343285_ModifyMovieAttrToNullable.Designer.cs">
+      <DependentUpon>201803071343285_ModifyMovieAttrToNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\MembreshipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VidlyContext.cs" />
@@ -343,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803061101478_Genres.resx">
       <DependentUpon>201803061101478_Genres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803071343285_ModifyMovieAttrToNullable.resx">
+      <DependentUpon>201803071343285_ModifyMovieAttrToNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

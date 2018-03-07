@@ -22,25 +22,28 @@
                             <div class="form-group label-floating">
                                 @Html.LabelFor(m => m.Movie.Name, new { @class = "control-label"})
                                 @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Movie.Name)
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group label-floating">
                                 @Html.LabelFor(m => m.Movie.GenreId, new { @class = "control-label" })
                                 @Html.DropDownListFor(m => m.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"), "", new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.Movie.GenreId)
                             </div>
                         </div>
                     </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group label-floating">
-                            <label class="control-label">Date Added</label>
+                            @Html.LabelFor(m => m.Movie.DateAdded, new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.Movie.DateAdded, "{0:d MMMM yyyy}", new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Movie.DateAdded)
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group label-floating">
-                            <label class="control-label">Release Date</label>
+                            @Html.LabelFor(m => m.Movie.ReleaseDate, new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.Movie.ReleaseDate, "{0:d MMMM yyyy}", new { @class = "form-control" })
                         </div>
                     </div>
@@ -48,7 +51,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group label-floating">
-                            <label class="control-label">Number In Stock</label>
+                            @Html.LabelFor(m => m.Movie.NumberInStock, new { @class = "control-label" })
                             @Html.TextBoxFor(m => m.Movie.NumberInStock, new { @class = "form-control", @type = "number" })
                         </div>
                     </div>

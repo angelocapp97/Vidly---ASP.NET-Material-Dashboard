@@ -23,7 +23,7 @@ namespace Vidly
                         "~/Content/js/material-dashboard.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/demo").Include(
-                        "~/Content/js/demo.js"));
+                        "~/Content/js/site.js"));
 
 
 
@@ -35,7 +35,7 @@ namespace Vidly
                       "~/Content/css/material-dashboard.css"));
 
             bundles.Add(new StyleBundle("~/Content/demo").Include(
-                      "~/Content/css/demo.css"));
+                      "~/Content/css/site.css"));
         }
     }
 }

@@ -4,15 +4,15 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>New Customer</h2>
+<h2>Add/Edit Customer</h2>
 
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header" data-background-color="purple">
-                    <h4 class="title">Create New Profile</h4>
-                    <p class="category">Insert here new profile data</p>
+                    <h4 class="title">Customer form</h4>
+                    <p class="category">Insert or update customer data down below.</p>
                 </div>
                 <div class="card-content">
 
@@ -27,13 +27,13 @@
                 <div class="col-md-6">
                     <div class="form-group label-floating">
                         <label class="control-label">Birthdate</label>
-                        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:d MMM yyyy}", new { @class = "form-control" })
+                        @Html.TextBoxFor(m => m.Customer.Birthdate, "{0:d MMMM yyyy}", new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Customer.MembershipTypeId)
-                        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
+                    <div class="form-group label-floating">
+                        @Html.LabelFor(m => m.Customer.MembershipTypeId, new { @class = "control-label" })
+                        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "", new { @class = "form-control" })
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -45,7 +45,10 @@
                 </div>
                 @Html.HiddenFor(m => m.Customer.Id)
                 <div class="col-md-12">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-success">
+                        <i class="material-icons">save</i>
+                        Save
+                    </button>
                     <a href="/customers" class="btn btn-danger">Cancel</a>
                 </div>
 }

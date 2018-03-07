@@ -11,32 +11,63 @@
     New Movie
 </a>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card">
-                <div class="card-header" data-background-color="orange">
-                    <h4 class="title">Movies</h4>
-                    <p class="category">Here is a list of movies.</p>
-                </div>
-                <div class="card-content table-responsive">
-                    <table class="table">
-                        <thead class="text-primary">
-                        <th>Name</th>
-                        <th>Genre</th
-                        </thead>
-                        <tbody>
-                            @foreach (var movie in Model)
-        {
-                            <tr>
-                                <td>@Html.ActionLink(movie.Name, "details/" + movie.Id, "movies")</td>
-                                <td>@movie.Genre.Name</td>
-                            </tr>
+@if (!Model.Any())
+{
+    <p>We don't have any movies yet.</p>
 }
-                        </tbody>
-                    </table>
+else
+{
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header" data-background-color="orange">
+                        <h4 class="title">Movies</h4>
+                        <p class="category">Here is a list of movies.</p>
+                    </div>
+                    <div class="card-content table-responsive">
+                        <table class="table">
+                            <thead class="text-primary">
+                            <th>Name</th>
+                            <th>Genre</th>
+                            <th></th>
+                            </thead>
+                            <tbody>
+                                @foreach (var movie in Model)
+                                {
+                                    <tr>
+                                        <td class="col-md-6">@movie.Name</td>
+                                        <td class="col-md-4">@movie.Genre.Name</td>
+                                        <td class="col-md-2" style="height: 50px">
+                                            <div class="actions">
+                                                <a href="/movies/edit/@movie.Id">
+                                                    <i class="material-icons">mode_edit</i>
+                                                </a>
+                                                <a href="/movies/delete/@movie.Id">
+                                                    <i class="material-icons">delete</i>
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+}
+
+@section TableScripts{
+    <script>
+        $(function () {
+            $(this).find('.actions').hide();
+            $('.table tr').hover(function () {
+                $(this).find('.actions').show();
+            }, function () {
+                $(this).find('.actions').hide();
+            });
+        });
+    </script>
+}

@@ -14,7 +14,7 @@ namespace Vidly.Models
         [StringLength(255)]
         public string Name { get; set; }
 
-        [Display(Name = "Membership Type")]
+        [Display(Name = "Select Membership Type")]
         public byte MembershipTypeId { get; set; }
         public MembershipType MembershipType { get; set; }
 

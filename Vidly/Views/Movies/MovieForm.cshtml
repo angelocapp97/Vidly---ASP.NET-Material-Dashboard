@@ -17,33 +17,31 @@
                 <div class="card-content">
                     @using (Html.BeginForm("Save", "Movies"))
     {
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group label-floating">
-                            <label class="control-label">Name</label>
-                            @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                @Html.LabelFor(m => m.Movie.Name, new { @class = "control-label"})
+                                @Html.TextBoxFor(m => m.Movie.Name, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group label-floating">
+                                @Html.LabelFor(m => m.Movie.GenreId, new { @class = "control-label" })
+                                @Html.DropDownListFor(m => m.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"), "", new { @class = "form-control" })
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="form-group">
-                            <label class="control-label">Genre</label>
-                            @Html.DropDownListFor(m => m.Movie.GenreId, new SelectList(Model.Genres, "Id", "Name"), "Select Genre", new { @class = "form-control" })
-                        </div>
-                    </div>
-                </div>
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group label-floating">
                             <label class="control-label">Date Added</label>
-                            @Html.TextBoxFor(m => m.Movie.DateAdded, new { @class = "form-control" })
+                            @Html.TextBoxFor(m => m.Movie.DateAdded, "{0:d MMMM yyyy}", new { @class = "form-control" })
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-group label-floating">
                             <label class="control-label">Release Date</label>
-                            @Html.TextBoxFor(m => m.Movie.ReleaseDate, new { @class = "form-control" })
+                            @Html.TextBoxFor(m => m.Movie.ReleaseDate, "{0:d MMMM yyyy}", new { @class = "form-control" })
                         </div>
                     </div>
                 </div>
@@ -58,8 +56,13 @@
                 <div class="row">
                     @Html.HiddenFor(m => m.Movie.Id)
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary">Save</button>
-                        <a href="/movies" class="btn btn-danger">Cancel</a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="material-icons">save</i>
+                            Save
+                        </button>
+                        <a href="/movies" class="btn btn-danger">
+                            Cancel
+                        </a>
                     </div>
                 </div>
 }

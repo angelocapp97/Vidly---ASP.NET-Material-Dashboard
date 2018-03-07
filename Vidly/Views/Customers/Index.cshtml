@@ -17,23 +17,34 @@ else
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header" data-background-color="orange">
-                        <h4 class="title">Movies</h4>
-                        <p class="category">Here is a list of movies.</p>
+                        <h4 class="title">Customers</h4>
+                        <p class="category">Here is customers list.</p>
                     </div>
                     <div class="card-content table-responsive">
                         <table class="table">
                             <thead class="text-primary">
                             <th>Name</th>
                             <th>Membership Type</th>
+                            <th></th>
                             </thead>
                             <tbody>
                                 @foreach (var customer in Model)
-        {
+                                {
                                 <tr>
-                                    <td>@Html.ActionLink(customer.Name, "edit/" + customer.Id, "customers")</td>
-                                    <td>@customer.MembershipType.Name</td>
+                                    <td class="col-md-6">@customer.Name</td>
+                                    <td class="col-md-4">@customer.MembershipType.Name</td>
+                                    <td class="col-md-2" style="height: 50px">
+                                        <div class="actions">
+                                            <a href="/customers/edit/@customer.Id">
+                                                <i class="material-icons">mode_edit</i>
+                                            </a>
+                                            <a href="/customer/delete/@customer.Id">
+                                                <i class="material-icons">delete</i>
+                                            </a>
+                                        </div>
+                                    </td>
                                 </tr>
-}
+                                }
                             </tbody>
                         </table>
                     </div>
@@ -41,4 +52,17 @@ else
             </div>
         </div>
     </div>
+}
+
+@section TableScripts{
+    <script>
+    $(function () {
+        $(this).find('.actions').hide();
+        $('.table tr').hover(function () {
+            $(this).find('.actions').show();
+        }, function () {
+            $(this).find('.actions').hide();
+        });
+    });
+    </script>
 }

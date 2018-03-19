@@ -11,7 +11,8 @@ namespace Vidly
             bundles.Add(new ScriptBundle("~/bundles/core").Include(
                         "~/Content/js/jquery-3.1.0.min.js",
                         "~/Content/js/bootstrap.min.js",
-                        "~/Content/js/material.min.js"));
+                        "~/Content/js/material.min.js",
+                        "~/Scripts/bootbox.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/chartist").Include(
                         "~/Content/js/chartist.min.js"));

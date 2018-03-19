@@ -11,63 +11,76 @@
     New Customer
 </a>
 
-@if (!Model.Any())
-{
-    <p>We don't have any customers yet.</p>
-}
-else
-{
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header" data-background-color="orange">
-                        <h4 class="title">Customers</h4>
-                        <p class="category">Here is customers list.</p>
-                    </div>
-                    <div class="card-content table-responsive">
-                        <table id="customers" class="table table-hover">
-                            <thead class="text-primary">
-                            <th>Name</th>
-                            <th>Membership Type</th>
-                            <th></th>
-                            </thead>
-                            <tbody>
-                                @foreach (var customer in Model)
-                                {
-                                <tr>
-                                    <td class="col-md-6">@customer.Name</td>
-                                    <td class="col-md-4">@customer.MembershipType.Name</td>
-                                    <td class="col-md-2" style="height: 50px">
-                                        <div class="actions">
-                                            <a href="/customers/edit/@customer.Id">
-                                                <i class="material-icons">mode_edit</i>
-                                            </a>
-                                            <a href="javascript:void(0)" class="js-delete" data-customer-id="@customer.Id">
-                                                <i class="material-icons">delete</i>
-                                            </a>
-                                        </div>
-                                    </td>
-                                </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="orange">
+                    <h4 class="title">Customers</h4>
+                    <p class="category">Here is customers list.</p>
+                </div>
+                <div class="card-content table-responsive">
+                    <table id="customers" class="table mdl-data-table">
+                        <thead class="text-primary">
+                        <th>Name</th>
+                        <th>Membership Type</th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-}
+</div>
 
 @section Scripts{
     <script>
         $(function () {
-            $(this).find('.actions').hide();
-            $('.table tr').hover(function () {
-                $(this).find('.actions').show();
-                }, function () {
-                    $(this).find('.actions').hide();
-                });
+            $(document).on({
+                load: function () {
+                    console.log("load");
+                },
+                mouseenter: function () {
+                    $(this).find('.actions').fadeIn(100);
+                },
+                mouseleave: function () {
+                    $(this).find('.actions').fadeOut(100);
+                }
+            }, '.table tbody tr');
+
+            var datatable = $("#customers").DataTable({
+                ajax: {
+                    url: "/api/customers/",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        className: "col-md-6 mdl-data-table__cell--non-numeric",
+                        data: "name"
+                    },
+                    {
+                        className: "col-md-4 mdl-data-table__cell--non-numeric",
+                        data: "membershipType.name"
+                    },
+                    {
+                        className: "col-md-2 mdl-data-table__cell--non-numeric",
+                        orderable: false,
+                        data: "id",
+                        render: function (data) {
+                            return `<div class="actions" style="display: none">
+                                        <a href="/customers/edit/${data}">
+                                            <i class="material-icons">mode_edit</i>
+                                        </a>
+                                        <a href="javascript:void(0)" class="js-delete" data-customer-id="${data}">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                    </div>`;
+                        }
+                    }
+                ]
+            });
 
             $("#customers").on("click", ".js-delete", function () {
                 var button = $(this);
@@ -78,7 +91,7 @@ else
                             url: "/api/customers/" + button.attr("data-customer-id"),
                             type: "DELETE",
                             success: function () {
-                                button.parents("tr").remove();
+                                datatable.row(button.parents("tr")).remove().draw();
                             }
                         });
                     }

@@ -11,62 +11,108 @@
     New Movie
 </a>
 
-@if (!Model.Any())
-{
-    <p>We don't have any movies yet.</p>
-}
-else
-{
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header" data-background-color="orange">
-                        <h4 class="title">Movies</h4>
-                        <p class="category">Here is a list of movies.</p>
-                    </div>
-                    <div class="card-content table-responsive">
-                        <table class="table">
-                            <thead class="text-primary">
-                            <th>Name</th>
-                            <th>Genre</th>
-                            <th></th>
-                            </thead>
-                            <tbody>
-                                @foreach (var movie in Model)
-                                {
-                                    <tr>
-                                        <td class="col-md-6">@movie.Name</td>
-                                        <td class="col-md-4">@movie.Genre.Name</td>
-                                        <td class="col-md-2" style="height: 50px">
-                                            <div class="actions">
-                                                <a href="/movies/edit/@movie.Id">
-                                                    <i class="material-icons">mode_edit</i>
-                                                </a>
-                                                <a href="/movies/delete/@movie.Id">
-                                                    <i class="material-icons">delete</i>
-                                                </a>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header" data-background-color="orange">
+                    <h4 class="title">Movies</h4>
+                    <p class="category">Here is a list of movies.</p>
+                </div>
+                <div class="card-content table-responsive">
+                    <table id="movies" class="table mdl-data-table">
+                        <thead class="text-primary">
+                        <th>Name</th>
+                        <th>Genre</th>
+                        <th></th>
+                        </thead>
+                        <tbody>
+                            @*@foreach (var movie in Model)
+                            {
+                                <tr>
+                                    <td class="col-md-6">@movie.Name</td>
+                                    <td class="col-md-4">@movie.Genre.Name</td>
+                                    <td class="col-md-2" style="height: 50px">
+                                        <div class="actions">
+                                            <a href="/movies/edit/@movie.Id">
+                                                <i class="material-icons">mode_edit</i>
+                                            </a>
+                                            <a href="/movies/delete/@movie.Id">
+                                                <i class="material-icons">delete</i>
+                                            </a>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }*@
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
-}
+</div>
 
 @section Scripts{
     <script>
         $(function () {
-            $(this).find('.actions').hide();
-            $('.table tr').hover(function () {
-                $(this).find('.actions').show();
-            }, function () {
-                $(this).find('.actions').hide();
+            $(document).on({
+                load: function () {
+                    console.log("load");
+                },
+                mouseenter: function () {
+                    $(this).find('.actions').fadeIn(100);
+                },
+                mouseleave: function () {
+                    $(this).find('.actions').fadeOut(100);
+                }
+            }, '.table tbody tr');
+
+            var datatable = $("#movies").DataTable({
+                ajax: {
+                    url: "/api/movies",
+                    dataSrc: ""
+                },
+                columns: [
+                    {
+                        className: "col-md-6 mdl-data-table__cell--non-numeric",
+                        data: "name"
+                    },
+                    {
+                        className: "col-md-4 mdl-data-table__cell--non-numeric",
+                        data: "genre.name"
+                    },
+                    {
+                        className: "col-md-2 mdl-data-table__cell--non-numeric",
+                        orderable: false,
+                        data: "id",
+                        render: function (data) {
+                            return `<div class="actions" style="display: none">
+                                        <a href="/movies/edit/${data}">
+                                            <i class="material-icons">mode_edit</i>
+                                        </a>
+                                        <a href="javascript:void(0)" class="js-delete" data-movie-id="${data}">
+                                            <i class="material-icons">delete</i>
+                                        </a>
+                                    </div>`;
+                        }
+                    }
+                ]
+            });
+
+            $("#movies").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure you want to delete this movie?", function (result) {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/movies/" + button.attr("data-movie-id"),
+                            type: "DELETE",
+                            success: function () {
+                                datatable.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
             });
         });
     </script>

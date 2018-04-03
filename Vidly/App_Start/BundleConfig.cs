@@ -14,6 +14,8 @@ namespace Vidly
                         "~/Content/js/material.min.js",
                         "~/Scripts/bootbox.js",
                         "~/Scripts/datatables/jquery.datatables.js",
+                        "~/Scripts/jquery.select-bootstrap.js",
+                        "~/Scripts/bootstrap-selectpicker.js",
                         "~/Scripts/datatables/datatables.bootstrap.js",
                         "~/Scripts/datatables/datatables.material.min.js"));
 
@@ -24,7 +26,11 @@ namespace Vidly
                         "~/Content/js/bootstrap-notify.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/material-dashboard").Include(
-                        "~/Content/js/material-dashboard.js"));
+                        "~/Content/js/material-dashboard.js",
+                        "~/Scripts/material-dashboard/material-dashboard.js",
+                        "~/Scripts/material-dashboard/popper.min.js",
+                        "~/Scripts/material-dashboard/bootstrap-material-design.min.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/demo").Include(
                         "~/Content/js/site.js"));
@@ -36,7 +42,9 @@ namespace Vidly
                       "~/Content/css/bootstrap.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/material-dashboard").Include(
-                      "~/Content/css/material-dashboard.css"));
+                      //"~/Content/css/material-dashboard-pro.css",
+                      "~/Content/css/material-dashboard.css"
+                      ));
 
             bundles.Add(new StyleBundle("~/Content/demo").Include(
                       "~/Content/css/site.css",

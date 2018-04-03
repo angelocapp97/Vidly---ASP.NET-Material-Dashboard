@@ -67,6 +67,14 @@
     color: red;
 }
 
-.input-validation-error {
+/*.input-validation-error {
     background-image: linear-gradient(#9c27b0, #9c27b0), linear-gradient(#F44336, #F44336) !important;
+}*/
+
+/*.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
 }
+
+.btn.btn-round {
+    border-radius: 30px !important;
+}*/

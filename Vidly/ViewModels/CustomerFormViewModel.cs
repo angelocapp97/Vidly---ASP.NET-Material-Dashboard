@@ -45,8 +45,6 @@ namespace Vidly.ViewModels
         {
             Id = customer.Id;
             Name = customer.Name;
-            Birthdate = customer.Birthdate;
-            IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
             MembershipTypeId = customer.MembershipTypeId;
         }
     }

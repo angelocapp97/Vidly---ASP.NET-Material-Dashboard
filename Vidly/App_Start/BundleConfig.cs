@@ -15,7 +15,9 @@ namespace Vidly
                         "~/Scripts/bootbox.js",
                         "~/Scripts/datatables/jquery.datatables.js",
                         "~/Scripts/datatables/datatables.bootstrap.js",
-                        "~/Scripts/datatables/datatables.material.min.js"));
+                        "~/Scripts/datatables/datatables.material.min.js",
+                        "~/Scripts/bootstrap-select.min.js"
+                        ));
 
             bundles.Add(new ScriptBundle("~/bundles/chartist").Include(
                         "~/Content/js/chartist.min.js"));
@@ -33,6 +35,7 @@ namespace Vidly
 
 
             bundles.Add(new StyleBundle("~/Content/bootstrap").Include(
+                      "~/Content/bootstrap-select.min.css",
                       "~/Content/css/bootstrap.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/material-dashboard").Include(

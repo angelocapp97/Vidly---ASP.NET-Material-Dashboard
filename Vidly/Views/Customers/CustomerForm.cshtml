@@ -28,7 +28,7 @@
                 <div class="col-md-6">
                     <div class="form-group label-floating">
                         @Html.LabelFor(m => m.MembershipTypeId, new { @class = "control-label" })
-                        @Html.DropDownListFor(m => m.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "", new { @class = "form-control" })
+                        @Html.DropDownListFor(m => m.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "", new { @class = "selectpicker", data_style = "btn btn-primary btn-round" })
                         @Html.ValidationMessageFor(m => m.MembershipTypeId)
                     </div>
                 </div>
@@ -62,3 +62,11 @@
         </div>
     </div>
 </div>
+
+@section scripts {
+    <script>
+        $(function () {
+            $(".selectpicker").selectpicker();
+        });
+    </script>
+}

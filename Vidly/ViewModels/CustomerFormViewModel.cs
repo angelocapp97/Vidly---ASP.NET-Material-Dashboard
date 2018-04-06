@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using Vidly.Models;
 
 namespace Vidly.ViewModels
 {
     public class CustomerFormViewModel
     {
-        public IEnumerable<MembershipType> MembershipTypes { get; set; }
+        // public IEnumerable<MembershipType> MembershipTypes { get; set; }
+        public List<SelectListItem> MembershipTypeItems { get; set; }
+        // public List<SelectListGroup> MembershipTypeGroups { get; set; }
 
         public int? Id { get; set; }
 

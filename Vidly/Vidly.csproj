@@ -241,9 +241,18 @@
     <Compile Include="Migrations\201803071343285_ModifyMovieAttrToNullable.Designer.cs">
       <DependentUpon>201803071343285_ModifyMovieAttrToNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804060759314_AddMembershipTypeGroup.cs" />
+    <Compile Include="Migrations\201804060759314_AddMembershipTypeGroup.Designer.cs">
+      <DependentUpon>201804060759314_AddMembershipTypeGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804060800316_PopulateMembershipTypeGroups.cs" />
+    <Compile Include="Migrations\201804060800316_PopulateMembershipTypeGroups.Designer.cs">
+      <DependentUpon>201804060800316_PopulateMembershipTypeGroups.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />
+    <Compile Include="Models\MembershipTypeGroup.cs" />
     <Compile Include="Models\MembreshipType.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
@@ -610,6 +619,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803071343285_ModifyMovieAttrToNullable.resx">
       <DependentUpon>201803071343285_ModifyMovieAttrToNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804060759314_AddMembershipTypeGroup.resx">
+      <DependentUpon>201804060759314_AddMembershipTypeGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804060800316_PopulateMembershipTypeGroups.resx">
+      <DependentUpon>201804060800316_PopulateMembershipTypeGroups.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

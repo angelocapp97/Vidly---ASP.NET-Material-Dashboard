@@ -27,10 +27,11 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group label-floating">
-                        @*<select asp-for="" asp-items="Model.MembershipTypes"></select>
                         @Html.LabelFor(m => m.MembershipTypeId, new { @class = "control-label" })
-                        @Html.DropDownListFor(m => m.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "", new { @class = "selectpicker", @multiple = true })
-                        @Html.ValidationMessageFor(m => m.MembershipTypeId)*@
+                        @*@Html.DropDownGroupListFor(m => m.MembershipTypeId, Model.MembershipTypesListItems, new { @class = "selectpicker", @multiple = true })*@
+                        @Html.DropDownListFor(m => m.MembershipTypeId, Model.MembershipTypesListItems, new { @class = "selectpicker", @multiple = true })
+                        @Html.ValidationMessageFor(m => m.MembershipTypeId)
+                        <input type="hidden" name="MembershipTypeId" value="" />
                     </div>
                 </div>
                 <div class="col-md-8">
@@ -67,9 +68,13 @@
 @section scripts {
     <script>
         $(function () {
-            $(".selectpicker").selectpicker({
-                style: 'form-control'
-            });
+            //$(".selectpicker").selectpicker({
+            //    style: 'form-control'
+            //});
+            $(".selectpicker")
+                .selectpicker('setStyle', 'btn', 'remove')
+                .selectpicker('setStyle', 'btn-default', 'remove')
+                .selectpicker('setStyle', 'form-control', 'add');
         });
     </script>
 }

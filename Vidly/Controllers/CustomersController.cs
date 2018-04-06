@@ -36,11 +36,22 @@ namespace Vidly.Controllers
 
         public ActionResult New()
         {
-            var membershipTypes = _context.MembershipTypes.ToList();
-            var viewModel = new CustomerFormViewModel()
-            {
-                // MembershipTypes = membershipTypes
-            };
+            //var membershipTypes = _context.MembershipTypes.Include(m => m.MembershipTypeGroup).ToList().Select(m => new GroupedSelectListItem
+            //{
+            //    GroupKey = m.MembershipTypeGroup.Id.ToString(),
+            //    GroupName = m.MembershipTypeGroup.Name,
+            //    Value = m.Id.ToString(),
+            //    Text = m.Name,
+            //});
+
+            //var viewModel = new CustomerFormViewModel()
+            //{
+            //    MembershipTypesListItems = membershipTypes
+            //};
+
+            var membershipTypes = _context.MembershipTypes.Include(m => m.MembershipTypeGroup).OrderBy(m => m.MembershipTypeGroup.Name).ToList();
+
+            var viewModel = new CustomerFormViewModel(membershipTypes);
 
             return View("CustomerForm", viewModel);
         }
@@ -52,10 +63,21 @@ namespace Vidly.Controllers
             if (customer == null)
                 return HttpNotFound();
 
-            var viewModel = new CustomerFormViewModel(customer)
-            {
-                // MembershipTypes = _context.MembershipTypes.ToList()
-            };
+            //var membershipTypes = _context.MembershipTypes.Include(m => m.MembershipTypeGroup).ToList().Select(m => new GroupedSelectListItem
+            //{
+            //    GroupKey = m.MembershipTypeGroup.Id.ToString(),
+            //    GroupName = m.MembershipTypeGroup.Name,
+            //    Value = m.Id.ToString(),
+            //    Text = m.Name,
+            //});
+
+            //var viewModel = new CustomerFormViewModel(customer)
+            //{
+            //    MembershipTypesListItems = membershipTypes
+            //};
+
+            var membershipTypes = _context.MembershipTypes.Include(m => m.MembershipTypeGroup).ToList();
+            var viewModel = new CustomerFormViewModel(customer, membershipTypes);
 
             return View("CustomerForm", viewModel);
         }
@@ -66,10 +88,23 @@ namespace Vidly.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var viewModel = new CustomerFormViewModel(customer)
-                {
-                    // MembershipTypes = _context.MembershipTypes.ToList()
-                };
+                // var membershipTypes = _context.MembershipTypes.ToList();
+                //var membershipTypes = _context.MembershipTypes.Include(m => m.MembershipTypeGroup).ToList().Select(m => new GroupedSelectListItem
+                //{
+                //    GroupKey = m.MembershipTypeGroup.Id.ToString(),
+                //    GroupName = m.MembershipTypeGroup.Name,
+                //    Value = m.Id.ToString(),
+                //    Text = m.Name,
+                //});
+
+                //var viewModel = new CustomerFormViewModel(customer)
+                //{
+                //    MembershipTypesListItems = membershipTypes
+                //};
+
+                var membershipTypes = _context.MembershipTypes.Include(m => m.MembershipTypeGroup).ToList();
+                var viewModel = new CustomerFormViewModel(customer, membershipTypes);
+
                 return View("CustomerForm", viewModel);
             }
 

@@ -49,6 +49,9 @@
     <Reference Include="AutoMapper, Version=4.1.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="DropDownList_Optgroup, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\DropDownList.Optgroup.MVC.1.0.0\lib\net40\DropDownList_Optgroup.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -257,6 +260,14 @@
     <Compile Include="Migrations\201804060806587_PopulateMembershipTypesWithGroup.Designer.cs">
       <DependentUpon>201804060806587_PopulateMembershipTypesWithGroup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804061231100_ModifyMembershipTypeGroups.cs" />
+    <Compile Include="Migrations\201804061231100_ModifyMembershipTypeGroups.Designer.cs">
+      <DependentUpon>201804061231100_ModifyMembershipTypeGroups.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804061234338_ChangeMembershipTypeRelationship.cs" />
+    <Compile Include="Migrations\201804061234338_ChangeMembershipTypeRelationship.Designer.cs">
+      <DependentUpon>201804061234338_ChangeMembershipTypeRelationship.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -383,6 +394,7 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\img\apple-icon.png" />
     <Content Include="Content\img\cover.jpeg" />
     <Content Include="Content\img\faces\marc.jpg" />
@@ -448,6 +460,10 @@
     <Content Include="Content\sass\md\_variables.scss" />
     <Content Include="Scripts\bootstrap-select.js.map" />
     <Content Include="Content\bootstrap-select.css.map" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.js" />
     <Content Include="Scripts\i18n\defaults-ar_AR.min.js" />
@@ -639,6 +655,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804060806587_PopulateMembershipTypesWithGroup.resx">
       <DependentUpon>201804060806587_PopulateMembershipTypesWithGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061231100_ModifyMembershipTypeGroups.resx">
+      <DependentUpon>201804061231100_ModifyMembershipTypeGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804061234338_ChangeMembershipTypeRelationship.resx">
+      <DependentUpon>201804061234338_ChangeMembershipTypeRelationship.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

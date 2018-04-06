@@ -249,6 +249,14 @@
     <Compile Include="Migrations\201804060800316_PopulateMembershipTypeGroups.Designer.cs">
       <DependentUpon>201804060800316_PopulateMembershipTypeGroups.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804060805457_LinkMembershipTypeToGroup.cs" />
+    <Compile Include="Migrations\201804060805457_LinkMembershipTypeToGroup.Designer.cs">
+      <DependentUpon>201804060805457_LinkMembershipTypeToGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201804060806587_PopulateMembershipTypesWithGroup.cs" />
+    <Compile Include="Migrations\201804060806587_PopulateMembershipTypesWithGroup.Designer.cs">
+      <DependentUpon>201804060806587_PopulateMembershipTypesWithGroup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />
@@ -625,6 +633,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804060800316_PopulateMembershipTypeGroups.resx">
       <DependentUpon>201804060800316_PopulateMembershipTypeGroups.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804060805457_LinkMembershipTypeToGroup.resx">
+      <DependentUpon>201804060805457_LinkMembershipTypeToGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804060806587_PopulateMembershipTypesWithGroup.resx">
+      <DependentUpon>201804060806587_PopulateMembershipTypesWithGroup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
